@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <title>Edit Profile</title>
+</head>
+<script src="../jslib/jquery-1.11.1.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#submit").click(function(){
+                alert("Student profile has been updated.");
+            });
+        });	
+</script>
+<script>
+var scale = 'scale(1.4)';
+document.body.style.webkitTransform =  scale;    // Chrome, Opera, Safari
+ document.body.style.msTransform =   scale;       // IE 9
+ document.body.style.transform = scale;     // General
+
+
+</script>
+<link rel="stylesheet" href="../css/sidebar.css">
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+
+
+<style>
+    body{
+        background-color: rgb(248, 235, 115);
+    }
+
+        h1 {
+            text-align: center;
+        }
+
+        #content{
+            margin-top: 80px;
+            padding: 60px;
+        }
+
+        #profile{
+            margin: 10px;
+            margin-left: 300px;
+            margin-right: 300px;
+            width: auto ;
+        }
+
+        @media only screen and (max-width: 1200px) {
+
+            #profile{
+                margin: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                width: auto;
+            }
+        }
+
+        @media only screen and (max-width: 1000px) {
+
+            #profile{
+                margin: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                width: auto;
+            }
+        }
+</style>
+<body>
+
+    <div class="btn">
+        <span class="fas fa-bars"></span>
+     </div>
+     <nav class="sidebar" style="z-index:1;">
+        <div class="text">
+           Admin Panel
+        </div>
+        <ul>
+           <li class="active"><a href="#">Dashboard</a></li>
+           <li>
+              <a href="#" class="feat-btn">Features
+              <span class="fas fa-caret-down first"></span>
+              </a>
+              <ul class="feat-show">
+                 <li><a href="#">Pages</a></li>
+                 <li><a href="#">Elements</a></li>
+              </ul>
+           </li>
+           <li>
+              <a href="#" class="serv-btn">Services
+              <span class="fas fa-caret-down second"></span>
+              </a>
+              <ul class="serv-show">
+                 <li><a href="#">App Design</a></li>
+                 <li><a href="#">Web Design</a></li>
+              </ul>
+           </li>
+           <li><a href="#">Portfolio</a></li>
+           <li><a href="#">Overview</a></li>
+           <li><a href="#">Shortcuts</a></li>
+           <li><a href="#">Feedback</a></li>
+        </ul>
+     </nav>
+
+     <div class="content" style="z-index:0;">
+        <div class="container" id="content">
+            <main class="form-signin">
+                <form method="post" action="">
+                    <h1><img src="../img/profile.png"/></h1>
+                    <h1 class="h3 mb-3 fw-normal"><Account>Student Profile</h1><br>
+    
+                    <div class="form-floating" id="profile">
+                        <input type="email" class="form-control" id="floatingInput" placeholder=" " name="email" value="101" readonly>
+                        <label for="floatingInput">Student ID</label>
+                    </div>
+                        
+                    <div class="form-floating" id="profile">
+                        <input type="text" class="form-control" id="floatingInput" placeholder="text" name="name" value="Chan Tai Man" required>
+                        <label for="floatingInput">Name</label>
+                    </div>
+    
+                    <div class="form-floating" id="profile">
+                        <input type="text" class="form-control" id="floatingInput" placeholder="text" name="phone" value="2B" required>
+                        <label for="floatingInput">Class</label>
+                    </div>
+        
+                    <div class="form-floating" id="profile">
+                        <input type="text" class="form-control" id="floatingPassword" placeholder="text" name="password" value="27" required>
+                        <label for="floatingPassword">Class ID</label>
+                    </div>
+    
+                    <div class="form-floating" id="profile">
+                        <input type="text" class="form-control" id="floatingPassword" placeholder="text" name="cpassword" value="chantaiman@yahoo.com.hk" required>
+                        <label for="floatingPassword">Email Address</label>
+                    </div>
+                    
+                    <div class="form-floating" id="profile">
+                        <input type="text" class="form-control" id="floatingPassword" placeholder="text" name="cpassword" value="asdadasdasdadasdadasddasdasdasdasdsdasda" required>
+                        <label for="floatingPassword">Address</label>
+                    </div><br>
+                    
+                    <div class="d-flex justify-content-evenly">
+                        <button class="btn btn-danger" type="button" onclick="window.location.href='viewStuProfile.html'">Back</button>
+                        <button class="btn btn-success" type="submit" id="submit" name="submit">Update Profile</button>
+                    </div>
+                </form>
+            </main>
+        </div>
+     </div>
+     <script>
+        $('.btn').click(function(){
+          $(this).toggleClass("click");
+          $('.sidebar').toggleClass("show");
+        });
+          $('.feat-btn').click(function(){
+            $('nav ul .feat-show').toggleClass("show");
+            $('nav ul .first').toggleClass("rotate");
+          });
+          $('.serv-btn').click(function(){
+            $('nav ul .serv-show').toggleClass("show1");
+            $('nav ul .second').toggleClass("rotate");
+          });
+          $('nav ul li').click(function(){
+            $(this).addClass("active").siblings().removeClass("active");
+          });
+     </script>
+
+
+</body>
+</html>

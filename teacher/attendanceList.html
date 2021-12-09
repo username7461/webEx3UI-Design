@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Hugo 0.84.0">
+  <title>Attendance Details</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <script src="../jslib/jquery-1.11.1.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $("#114116").hide();
+
+      $("input").keyup(function(){
+        $("table tbody tr").hide().filter(":contains('" + $(this).val() + "')").show();
+        $("#trHead").show();
+      });
+
+      $("#select").change(function(){
+        switch($(this).val()){
+          case "114105":
+          case "114127":
+          case "114149":
+          case "117166":
+            $("#114105").show();
+            $("#114116").hide();
+            break;
+
+          case "114116":
+          case "114138":
+          case "117150":
+            $("#114105").hide();
+            $("#114116").show();
+            break;
+        }
+      });
+    });
+  </script>
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+    
+  <!-- Custom styles for this template -->
+  <link href="dashboard.css" rel="stylesheet">
+</head>
+<body>   
+  <header>
+	  <nav class="navbar navbar-expand-sm navbar-dark bg-dark" aria-label="Third navbar example">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Innovative Secondary school</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse">
+                <ul class="navbar-nav me-auto mb-2 mb-sm-0">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="teacherMain.html">Home</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-bs-toggle="dropdown" aria-expanded="false">Manage Class</a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdown03">
+                            <li><a class="dropdown-item" href="classList.html">View/Edit Class</a></li>
+                            <li><a class="dropdown-item" href="createClass.html">Create Class</a></li>
+                            <li><a class="dropdown-item" href="moduleList.html">View Class Details</a></li>
+                        </ul>
+                    </li>
+                
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-bs-toggle="dropdown" aria-expanded="false">Manage Students</a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdown03">
+                            <li><a class="dropdown-item" href="studentList.html">View Student List</a></li>
+                            <li><a class="dropdown-item" href="classMember.html">Add/Drop Students</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-bs-toggle="dropdown" aria-expanded="false">Attendance</a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdown03">
+					<li><a class="dropdown-item" href="endorsement.html">Endorse documents</a></li>
+							 <li><a class="dropdown-item" href="createAttendance.html">Take Attendance</a></li>
+
+                            <li><a class="dropdown-item" href="studentList.html">View Today Attendance</a></li>
+                            <li><a class="dropdown-item" href="Teacher-Report.html">Generate Weekly Report</a></li>
+                        </ul>
+                    </li>
+                
+					          <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-bs-toggle="dropdown" aria-expanded="false">Extracurricular activity</a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdown03">
+							 <li><a class="dropdown-item" href="activityTakeAttendance.html">Take Attendance</a></li>
+						<li><a class="dropdown-item" href="ActivitystudentList.html">View attendace record</a></li>
+                        </ul>
+                    </li>
+					
+					
+					
+                    <li class="nav-item">
+                        <a class="nav-link" href="editTeacherProfile.html">Edit My Account</a>
+                    </li>	
+                </ul>
+   
+		      <a class="navbar-brand" href="#">Welcome! Fong Ho Man (Teacher)</a>
+		      <button type="button" class="btn btn-outline-primary" onclick="window.location.href='../login.html'">Sign out</button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+      <h1 class="h2">Attendance record for Chan Tai Man</h1>
+      <div class="btn-toolbar mb-2 mb-md-0">
+        <div class="btn-group me-2">
+        </div>
+      </div>
+    </div>
+    <div class="table-responsive">
+      <table class="table table-striped table-sm" id="114105">
+        <thead>
+          <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Status</th>
+            <th scope="col">Time Arrived</th>
+            <th scope="col">Leave At</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>01/09/2021 (Mon)</td>
+            <td>Late</td>
+            <td>8:10</td>
+            <td>15:30</td>
+          </tr>
+          <tr>
+            <td>02/09/2021 (Tue)</td>
+            <td>Present</td>
+            <td>7:12</td>
+            <td>15:30</td>
+          </tr>
+          <tr>
+            <td>03/09/2021 (Wed)</td>
+            <td>Present</td>
+            <td>7:40</td>
+            <td>15:30</td>
+          </tr>
+          <tr>
+            <td>04/09/2021 (Thu)</td>
+            <td>Present</td>
+            <td>7:52</td>
+            <td>15:30</td>
+          </tr>
+          <tr>
+              <td>05/09/2021 (Fri)</td>
+              <td>Early leave</td>
+              <td>12:37</td>
+              <td>15:30</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table class="table table-striped table-sm" id="114116">
+        <thead>
+          <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Status</th>
+            <th scope="col">Time Arrived</th>
+            <th scope="col">Leave At</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>01/09/2021 (Mon)</td>
+            <td>Late</td>
+            <td>8:10</td>
+            <td>15:30</td>
+          </tr>
+          <tr>
+            <td>02/09/2021 (Tue)</td>
+            <td>Present</td>
+            <td>7:12</td>
+            <td>15:30</td>
+          </tr>
+          <tr>
+            <td>03/09/2021 (Wed)</td>
+            <td>Present</td>
+            <td>7:40</td>
+            <td>15:30</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script><script src="dashboard.js"></script>
+  </body>
+</html>

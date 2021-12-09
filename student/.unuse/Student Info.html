@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Attendance Details</title>
+		    <script src="jslib/jquery-1.11.1.js" type="text/javascript"></script>
+    	<script type="text/javascript">
+			
+        $(document).ready(function(){
+			$("#search").click(function() {
+  				var value = $('#select').val();
+				switch (value) {
+						
+				  case 'ITE4103':
+					window.location.replace("ITE4103.html");
+					break;
+						
+						case 'ITE4116M':
+					window.location.replace("ITE4116M.html");
+					break;
+						
+						case 'ITP4506':
+					window.location.replace("ITP4506.html");
+					break;
+						
+						case 'ITP4507':
+					window.location.replace("ITP4507.html");
+					break;
+						
+						case 'ITP4514':
+					window.location.replace("ITP4514.html");
+					break;
+						
+						case 'LAN3003':
+					window.location.replace("LAN3003.html");
+					break;
+						
+						case 'LAN4108':
+					window.location.replace("LAN4108.html");
+					break;
+				}
+			});
+		});
+   	 </script>
+</head>
+<style>
+    body{
+        background-color: rgb(248, 235, 115); 
+    }
+
+    #top{
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+
+    #filter{
+        width: 60%;
+    }
+
+    a{
+        color: white;
+        text-decoration: none;
+        font-size: 25px;
+    }
+
+    a:hover{
+        color: rgb(248, 235, 115);
+    }
+
+    #head{
+        width: 100%;
+    }
+
+    h2{
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+</style>
+<body>
+    <div class="container" id="top">
+        <div class="btn-group" role="group" aria-label="Basic radio toggle button group" id="head">
+            <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off">
+            <label class="btn btn-outline-dark" for="btnradio1"><a href="viewStuProfile.html">Student Information</a></label>
+          
+            <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" checked>
+            <label class="btn btn-outline-dark" for="btnradio2"><a href="Student Info.html">Attendance Details</a></label>
+          </div>
+    </div>
+    <div class="container" id="">
+        <div class="d-flex justify-content-end">
+            <select class="form-select" aria-label="Default select example" id="select">
+                <option value="ITE4103">ITE4103 IT Professionalism</option>
+                <option value="ITE4116M" selected>ITE4116M Final Year Project</option>
+                <option value="ITP4506">ITP4506 Human Computer Interaction and GUI Programming</option>
+                <option value="ITP4507">ITP4507 Contemporary Topics in Software Engineering</option>
+                <option value="ITP4514">ITP4514 Artificial Intelligence and Machine Learning</option>
+                <option value="LAN3003">LAN3003 職業中文傳意: 普通話對話與匯報</option>
+                <option value="LAN4108">LAN4108 English and Communication: Persuasive Presentations</option>
+            </select>
+            <button type="button" class="btn btn-dark" id="search">Search</button>
+        </div>
+    </div>
+	
+    <div class="container">
+		<h2>Attendance record for Chan Tai Man</h2>
+        <table class="table table-dark table-hover">
+            <tr><th>Date</th><th>Status</th><th>Time Arrived</th><th>Leave At</th></tr>
+            <tr><td>01/09/2021 (Mon)</td><td>Late</td><td>8:10</td><td>15:30</td></tr>
+            <tr><td>02/09/2021 (Tue)</td><td>Present</td><td>7:12</td><td>15:30</td></tr>
+            <tr><td>03/09/2021 (Wed)</td><td>Present</td><td>7:40</td><td>15:30</td></tr>
+            <tr><td>04/09/2021 (Thu)</td><td>Present</td><td>7:52</td><td>15:30</td></tr>
+            <tr><td>05/09/2021 (Fri)</td><td>Early leave</td><td>12:37</td><td>15:30</td></tr>
+        </table>
+    </div>
+</body>
+</html>

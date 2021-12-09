@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <title>Attendance Details</title>
+  <script src="../jslib/jquery-1.11.1.js" type="text/javascript"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</head>
+
+<!--	TODO: clear conflict with bootstrap!!!-->
+<style>
+  .fade-in  { animation: animate 1s; }
+  .fade-in1 { animation: animate 1s 0.1s; }
+  *         { box-sizing: border-box }
+  td, th    { text-align: center; }
+  h2        { margin-top: 12px; }
+
+  /* Slideshow container */
+  .slideshow-container {
+    max-width: 1000px;
+    position: relative;
+    margin: auto;
+  }
+
+  /* Hide the images by default */
+  .mySlides { display: none; }
+
+  /* Next & previous buttons */
+  .prev, .next {
+    /*  cursor: pointer;*/
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+  }
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover { background-color: rgba(0,0,0,0.8); }
+
+/* Caption text */
+.text {
+  color: black;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: -40px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: black;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+  outline: auto;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover { background-color: #717171; }
+
+/* Fading animation */
+.fadeSlide {
+  -webkit-animation-name: fade-in;
+  -webkit-animation-duration: 0.8s;
+  animation-name: fade-in;
+  animation-duration: 0.8s;
+}
+
+@-webkit-keyframes fade-in {
+  from { opacity: .0 }
+  to { opacity: 1 }
+}
+
+@keyframes fade-in {
+  from { opacity: .0 }
+  to { opacity: 1 }
+}
+
+@-webkit-keyframes animate {
+  from {
+    transform: translateY(-30%);
+    opacity: 20%;
+  }
+
+  to {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+</style>
+<body>
+  <header>	
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark" aria-label="Third navbar example">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Innovative Secondary school</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+  
+        <div class="collapse navbar-collapse">
+                <ul class="navbar-nav me-auto mb-2 mb-sm-0">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="teacherMain.html">Home</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-bs-toggle="dropdown" aria-expanded="false">Manage Class</a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdown03">
+                            <li><a class="dropdown-item" href="classList.html">View/Edit Class</a></li>
+                            <li><a class="dropdown-item" href="createClass.html">Create Class</a></li>
+                            <li><a class="dropdown-item" href="moduleList.html">View Class Details</a></li>
+                        </ul>
+                    </li>
+                
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-bs-toggle="dropdown" aria-expanded="false">Manage Students</a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdown03">
+                            <li><a class="dropdown-item" href="studentList.html">View Student List</a></li>
+                            <li><a class="dropdown-item" href="classMember.html">Add/Drop Students</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-bs-toggle="dropdown" aria-expanded="false">Attendance</a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdown03">
+					<li><a class="dropdown-item" href="endorsement.html">Endorse documents</a></li>
+							 <li><a class="dropdown-item" href="createAttendance.html">Take Attendance</a></li>
+
+                            <li><a class="dropdown-item" href="studentList.html">View Today Attendance</a></li>
+                            <li><a class="dropdown-item" href="Teacher-Report.html">Generate Weekly Report</a></li>
+                        </ul>
+                    </li>
+                
+					          <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-bs-toggle="dropdown" aria-expanded="false">Extracurricular activity</a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdown03">
+							 <li><a class="dropdown-item" href="activityTakeAttendance.html">Take Attendance</a></li>
+						<li><a class="dropdown-item" href="ActivitystudentList.html">View attendace record</a></li>
+                        </ul>
+                    </li>
+					
+					
+					
+                    <li class="nav-item">
+                        <a class="nav-link" href="editTeacherProfile.html">Edit My Account</a>
+                    </li>	
+                </ul>
+      
+          <a class="navbar-brand" href="#">Welcome! Fong Ho Man (Teacher)</a>
+          <button type="button" class="btn btn-outline-primary" onclick="window.location.href='../login.html'">Sign out</button>
+        </div>
+      </div>
+    </nav>
+  </header>
+	
+  <script>
+    var myModal = document.getElementById('myModal');
+    var myInput = document.getElementById('myInput');
+
+    myModal.addEventListener('shown.bs.modal', function () {
+      myInput.focus();
+    });
+  </script>
+
+<main>
+  <div class="py-4" style="padding: 50px;" >
+    <header class="pb-3 mb-4 border-bottom"> <a  class="d-flex align-items-center text-dark text-decoration-none"><span class="fs-4">Generate attendance report</span> </a> </header>
+    <div class="p-5 bg-light rounded-3">
+      <div class="container-fluid py-5 ">
+        <div class = "row">
+          <div class = "col">
+            <h4 class="fw-bold">Attendace report for Class 4B - Week 4</h4>
+          </div>
+
+          <div class = "col text-end"> 
+            <!--  modal trigger-->
+            <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modal1">Click here for attendance record </button>
+          </div>
+        </div>
+        <hr>
+        <div class="row" >
+          <div class="col-md-6 fade-in" style="padding: 50px;"> 
+            <!--			<img src="../img/classAttendance.png" class="fade-in" style="height:500px;">--> 
+            <!-- Slideshow container -->
+            <div class="slideshow-container"> 
+              <!-- Full-width images with number and caption text -->
+              <div class="mySlides fadeSlide">
+                <div class="numbertext">1 / 3</div>
+                <!--                <div class="container" style="width:600px">--> 
+                <br>
+                <h2>Absent record for 4B</h2>
+                <table class="table table-dark table-hover" >
+                  <tr>
+                    <th>Date</th>
+                    <th>Class ID</th>
+                    <th>Name</th>
+                    <th>Endorsed? (Y/N)</th>
+                  </tr>
+                  <tr>
+                    <td>20/09/2021 (Mon)</td>
+                    <td>3</td>
+                    <td>Chan Tai Man</td>
+                    <td>Y</td>
+                  </tr>
+                  <tr>
+                    <td>20/09/2021 (Mon)</td>
+                    <td>16</td>
+                    <td>Wong Yak Shing</td>
+                    <td>Y</td>
+                  </tr>
+                  <tr>
+                    <td>21/09/2021 (Tue)</td>
+                    <td>8</td>
+                    <td>Lo Wing Kin</td>
+                    <td>Y</td>
+                  </tr>
+                  <tr>
+                    <td>23/09/2021 (Thu)</td>
+                    <td>10</td>
+                    <td>Yip Ka Chun</td>
+                    <td>N</td>
+                  </tr>
+                  <tr>
+                    <td>23/09/2021 (Thu)</td>
+                    <td>2</td>
+                    <td>Chan Chi Kin</td>
+                    <td>Y</td>
+                  </tr>
+                  <tr>
+                    <td>24/09/2021 (Fri)</td>
+                    <td>11</td>
+                    <td>Liu Tak Fai</td>
+                    <td>Y</td>
+                  </tr>
+                </table>
+                <!--                </div>-->
+                <div class="text">Absent Record</div>
+              </div>
+                <div class="mySlides fadeSlide" >
+                  <div class="numbertext">2 / 3</div>
+                  <!--               <div class="container" style="width:600px"> --> 
+                  <br>
+                  <h2>Early leave record for 4B</h2>
+                  <table class="table table-dark table-hover" >
+                    <tr>
+                      <th>Date</th>
+                      <th>Class ID</th>
+                      <th>Name</th>
+                      <th>Leave At</th>
+                      <th>Reason</th>
+                    </tr>
+                    <tr>
+                      <td>20/09/2021 (Mon)</td>
+                      <td>4</td>
+                      <td>Chan Chi Kin</td>
+                      <td>12:30</td>
+                      <td>Early leave</td>
+                    </tr>
+                    <tr>
+                      <td>20/09/2021 (Mon)</td>
+                      <td>14</td>
+                      <td>Lo Ching Fung</td>
+                      <td>13:21</td>
+                      <td>Personal leave</td>
+                    </tr>
+                    <tr>
+                      <td>21/09/2021 (Tue)</td>
+                      <td>5</td>
+                      <td>Ng Yak Shing</td>
+                      <td>9:57</td>
+                      <td>Sick leave</td>
+                    </tr>
+                  </table>
+                <!--                </div>-->
+                <div class="text">Early leave record</div>
+              </div>
+              <div class="mySlides fadeSlide">
+                <div class="numbertext">3 / 3</div>
+                <br>
+                <h2>Late record for 4B</h2>
+                <table class="table table-dark table-hover" >
+                  <tr>
+                    <th>Date</th>
+                    <th>Class ID</th>
+                    <th>Name</th>
+                    <th>Arrived at</th>
+                  </tr>
+                  <tr>
+                    <td>20/09/2021 (Mon)</td>
+                    <td>27</td>
+                    <td>Lo Wing Yee</td>
+                    <td>8:10</td>
+                  </tr>
+                  <tr>
+                    <td>20/09/2021 (Mon)</td>
+                    <td>1</td>
+                    <td>Chan Tai Man</td>
+                    <td>9:12</td>
+                  </tr>
+                  <tr>
+                    <td>21/09/2021 (Tue)</td>
+                    <td>5</td>
+                    <td>Wong Ka Wing</td>
+                    <td>8:15</td>
+                  </tr>
+                  <tr>
+                    <td>23/09/2021 (Thu)</td>
+                    <td>16</td>
+                    <td>Wong Yak Shing</td>
+                    <td>8:01</td>
+                  </tr>
+                  <tr>
+                    <td>24/09/2021 (Fri)</td>
+                    <td>2</td>
+                    <td>Chan Ho lam</td>
+                    <td>8:25</td>
+                  </tr>
+                </table>
+                <div class="text">Late Record</div>
+              </div>
+              
+              <!-- Next and previous buttons --> 
+              <a class="prev" onclick="plusSlides(-1)">&#10094;</a> <a class="next" onclick="plusSlides(1)">&#10095;</a> </div>
+              <br>
+            
+              <!-- The dots/circles -->
+              <div style="text-align:center"> <span class="dot" onclick="currentSlide(1)"></span> <span class="dot" onclick="currentSlide(2)"></span> <span class="dot" onclick="currentSlide(3)"></span></div>
+            </div>
+            <div class="col-md-6 text-start fade-in1" style="padding: 50px;">
+              <div class="h5">Report information</div><hr>
+              Date generated: Sep 24, 2021 - 17:59 HKT<br>
+              Filter rule: By Week<br>
+              Time between: Sep 20 - Sep 24 (Week 4)<br>
+              Days Recorded: 5
+              
+              <p>
+              <div class="h5">Overview</div><hr>
+              Total number of students: 30 <br>
+              Average attendance per day: 28.8 (96%)<br>
+              Total absent without reason: 1<br>
+              <br>
+          
+              <div class="h5">Late Statistics</div>
+			        <hr>
+			        Total late students: 5<br>
+              Average arrival time: 7:52am<br>
+            
+              <br>
+              <div class="h5">Recorded leave reasons</div><hr>
+              Recorded leave reasons<br>
+              Early Leave: 1<br>
+              Sick Leave: 1<br>
+              Personal Leave: 1 <br>
+              ------------------------------------------------------------------------------------------------------------------<br>
+              Total: 3<br>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="pt-3 mt-4 text-muted border-top"> </footer>
+    </div>
+  </div>
+</main>
+
+<script>
+	var slideIndex = 1;
+  showSlides(slideIndex);
+
+  // Next/previous controls
+  function plusSlides(n) {
+    showSlides(slideIndex += n);
+  }
+
+  // Thumbnail image controls
+  function currentSlide(n) {
+    showSlides(slideIndex = n);
+  }
+
+  function showSlides(n) {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    var dots = document.getElementsByClassName("dot");
+    if (n > slides.length) {slideIndex = 1}
+    if (n < 1) {slideIndex = slides.length}
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex-1].style.display = "block";
+    dots[slideIndex-1].className += " active";
+  }
+</script> 
+
+<!--	modal-->
+<div class="modal fade" id="modal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Attendance record for 4B</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+ 			    <h4>Showing 1 of 4 page for 20/09/2021 (Mon)</h4>
+          <table class="table table-dark table-hover">
+            <tr>
+              <th>Date</th>
+              <th>Class ID</th>
+				      <th>Name</th>
+              <th>Time Arrived</th>
+              <th>Leave At</th>
+            </tr>
+            <tr>
+              <td>20/09/2021 (Mon)</td>
+              <td>1</td>
+			        <td>Chan Tai Man</td>
+              <td>8:10</td>
+              <td>15:30</td>
+            </tr>
+            <tr>
+              <td>20/09/2021 (Mon)</td>
+              <td>1</td>
+			        <td>Chan Tai Man</td>
+              <td>8:10</td>
+              <td>15:30</td>
+            </tr>
+            <tr>
+              <td>20/09/2021 (Mon)</td>
+              <td>1</td>
+			        <td>Chan Tai Man</td>
+              <td>8:10</td>
+              <td>15:30</td>
+            </tr>
+            <tr>
+              <td>20/09/2021 (Mon)</td>
+              <td>1</td>
+			        <td>Chan Tai Man</td>
+              <td>8:10</td>
+              <td>15:30</td>
+            </tr>
+            <tr>
+              <td>20/09/2021 (Mon)</td>
+              <td>1</td>
+			        <td>Chan Tai Man</td>
+              <td>8:10</td>
+              <td>15:30</td>
+            </tr>
+			      <tr>
+              <td>20/09/2021 (Mon)</td>
+              <td>1</td>
+			        <td>Chan Tai Man</td>
+              <td>8:10</td>
+              <td>15:30</td>
+            </tr>
+            <tr>
+              <td>20/09/2021 (Mon)</td>
+              <td>1</td>
+			        <td>Chan Tai Man</td>
+              <td>8:10</td>
+              <td>15:30</td>
+            </tr>
+            <tr>
+              <td>20/09/2021 (Mon)</td>
+              <td>1</td>
+			        <td>Chan Tai Man</td>
+              <td>8:10</td>
+              <td>15:30</td>
+            </tr>
+            <tr>
+              <td>20/09/2021 (Mon)</td>
+              <td>1</td>
+			        <td>Chan Tai Man</td>
+              <td>8:10</td>
+              <td>15:30</td>
+            </tr>
+            <tr>
+              <td>20/09/2021 (Mon)</td>
+              <td>1</td>
+			        <td>Chan Tai Man</td>
+              <td>8:10</td>
+              <td>15:30</td>
+            </tr>
+          </table>
+			    <div class="container">
+            <div class="row d-flex justify-content-between text-center">
+              <div class="col">
+                <button type="button" class="btn btn-warning">Prev Day</button>
+              </div>
+
+              <div class="col">
+                <button type="button" class="btn btn-secondary">Prev page</button>
+              </div>
+
+              <div class="col">
+                <button type="button" class="btn btn-secondary">Next Page</button>
+              </div>
+
+              <div class="col">
+                <button type="button" class="btn btn-warning">Next Day</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
